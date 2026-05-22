@@ -1,18 +1,27 @@
 import express from "express";
-import db from "../../database.js";
-import { getProjects, getProjectsByID } from "../../controllers/projectscontroller.js";
+import { getProjects, getProjectsByID, getProjectsByQuery, createProject, changeProject, updateProject, deleteProject } from "../../controllers/projectscontroller.js";
 
 const router = express.Router();
 
-//READ
+//GET (url - data in url)
 router.get("/projects", getProjects);
 
-//READ BY ID
+//GET BY PARAMS (url - data in url)
+router.get("/projectsID/:id", getProjectsByID);
 
-//CREATE 
+//GET BY QUERY SEARCH (GET form - makes query data)
+router.get("/getProjectsByQuery", getProjectsByQuery);
 
-//UPDATE BY ID
+//POST CREATE NEW BY REQ.BODY (POST manual JSON form - makes req.body data)
+router.post("/createProject", createProject)
 
-//DELETE BY ID
+//PUT RESOURCE CHANGE BY REQ.BODY (POST manual JSON form - makes req.body data)
+router.put("/changeProject", changeProject);
+
+//PATCH PARTIAL CHANGE BY REQ.BODY (POST manual JSON form - make req.body data)
+router.patch("/updateProject", updateProject);
+
+//DELETE BY REQ.BODY (POST manual JSON form - makes req.body data)
+router.delete("/deleteProject", deleteProject);
 
 export default router;
