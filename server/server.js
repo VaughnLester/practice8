@@ -6,9 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req,res)=>{
-    res.send("app is live");
-})
+app.use(express.static("../client/practice8/dist"));
 
 app.use(projectRouter);
 
